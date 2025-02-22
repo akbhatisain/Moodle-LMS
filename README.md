@@ -27,7 +27,7 @@ More about system Requirements:- https://docs.moodle.org/405/en/Installing_Moodl
 2. Add entry in hosts file:- 127.0.0.1   Your_domain_name
 
 ### Setup Moodle on Docker container:
-1. git clone repo_url
+1. git clone https://github.com/akbhatisain/Moodle-LMS
 2. cd repo_name
 3. Certificate generation:-
     A. cd ./certs
