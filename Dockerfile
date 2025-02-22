@@ -19,6 +19,9 @@ COPY moodle.zip /tmp/
 COPY entrypoint.sh /entrypoint.sh
 COPY ./certs/* /etc/apache2/certs/
 
+# Ensure MariaDB and Moodle data persist
+VOLUME ["./mysql", "./moodledata"]
+
 # Unzip Moodle, set proper permissions
 RUN unzip /tmp/moodle.zip -d /var/www/html/ && \
     cp -R /var/www/html/moodle/* /var/www/html/ && \
@@ -28,13 +31,13 @@ RUN unzip /tmp/moodle.zip -d /var/www/html/ && \
 # Create Moodle data directory with proper permissions
 RUN mkdir -p /var/www/moodledata && \
     chown -R www-data:www-data /var/www/moodledata && \
-    chmod -R 775 /var/www/moodledata
+    chmod -R 775 /var/www/moodledata && \
+    chmod +x /entrypoint.sh
 
 # Ensure entrypoint script is executable
 RUN sed -i 's/;max_input_vars = 1000/max_input_vars = 5000/' /etc/php/8.3/apache2/php.ini && \
     sed -i 's/;max_input_vars = 1000/max_input_vars = 5000/' /etc/php/8.3/cli/php.ini
-    
-RUN chmod +x /entrypoint.sh
+
 
 # Expose required ports
 EXPOSE 80 443
