@@ -64,7 +64,7 @@ Site home settings>  Sitename, Site description, timezone, language, etc. > Save
 We are ready to go!
 ____________________________________________________________________________________________________________________
 
-## Moodle Installation on Ubuntu 24.04 LTS
+# Moodle Installation on Ubuntu 24.04 LTS
 
 ### Update System and Install Apache, MariaDB:-
     $ sudo apt update
@@ -75,6 +75,9 @@ ________________________________________________________________________________
     $ sudo apt install mariadb-server -y
     $ sudo systemctl enable mariadb
     $ sudo systemctl start mariadb
+
+### Install PHP and Required Extensions
+    $ sudo apt install certbot python3-certbot-apache php php-soap libapache2-mod-php php-mysql php-xml php-mbstring php-curl php-zip php-gd php-intl -y
     
 ### Create Moodle Database and User
     $ sudo mysql_secure_installation  
@@ -86,9 +89,6 @@ Log into the MariaDB shell as the root user:
 >     GRANT ALL PRIVILEGES ON moodle.* TO 'moodleuser'@'localhost';
 >     FLUSH PRIVILEGES;
 >     EXIT;
-
-### Install PHP and Required Extensions
-    $ sudo apt install certbot python3-certbot-apache php php-soap libapache2-mod-php php-mysql php-xml php-mbstring php-curl php-zip php-gd php-intl -y
 
 ### Configure Apache
     $ sudo systemctl restart apache2
@@ -160,15 +160,15 @@ OR
 ### configure Moodle on the web browser:
 https://your_domain_or_IP/
 Installation > 
-        Choose Languange > next
-        Paths > Confirm Paths > next
-        Database > Choose database driver > MariaDB(native/mariadb) > next
-        Database > Database settings > Username/Passwd > next  ##Check Entrypoint.sh file
-        Copyright notice > continue  
-        Server checks > Fix and Reload OR Continue (If everthing is ok)
-        Now it will check entire system and show you the result then > Continue
-General > Fill the form(USERNAME,PASSWORD,EMAIL,SITE NAME) > Update profile
-Site home settings>  Sitename, Site description, timezone, language, etc. > Save Changes
+>        Choose Languange > next
+>        Paths > Confirm Paths > next
+>        Database > Choose database driver > MariaDB(native/mariadb) > next
+>        Database > Database settings > Username/Passwd > next  ##Check Entrypoint.sh file
+>        Copyright notice > continue  
+>        Server checks > Fix and Reload OR Continue (If everthing is ok)
+>        Now it will check entire system and show you the result then > Continue
+>        General > Fill the form(USERNAME,PASSWORD,EMAIL,SITE NAME) > Update profile
+>        Site home settings>  Sitename, Site description, timezone, language, etc. > Save Changes
 
 We are ready to go!
 
