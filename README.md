@@ -14,7 +14,7 @@ More about system Requirements:- https://docs.moodle.org/405/en/Installing_Moodl
 
 ## Moodle installation on Docker container:
 
-### Prerequisites:-
+### Prerequisites:
 1. Docker installed on your system.
 2. A domain name or IP address pointing to your server.
 3. moodle.zip file should be there in directory. (you can download latest one.)
@@ -24,7 +24,8 @@ More about system Requirements:- https://docs.moodle.org/405/en/Installing_Moodl
 #### 1. Edit Host file  
     - Linux :- /etc/hosts 
     - Windows :- c:/windows/system32/drivers/etc/hosts
-#### 2. Add entry in hosts file:- 
+
+#### 2. Add entry in hosts file:
     127.0.0.1   Your_domain_name
 
 ### Setup Moodle on Docker container:
@@ -66,7 +67,7 @@ ________________________________________________________________________________
 
 # Moodle Installation on Ubuntu 24.04 LTS
 
-### Update System and Install Apache, MariaDB:-
+### Update System and Install Apache, MariaDB:
     $ sudo apt update
     $ sudo apt upgrade -y
     $ sudo apt install apache2 -y
@@ -76,10 +77,10 @@ ________________________________________________________________________________
     $ sudo systemctl enable mariadb
     $ sudo systemctl start mariadb
 
-### Install PHP and Required Extensions
+### Install PHP and Required Extensions:
     $ sudo apt install certbot python3-certbot-apache php php-soap libapache2-mod-php php-mysql php-xml php-mbstring php-curl php-zip php-gd php-intl -y
     
-### Create Moodle Database and User
+### Create Moodle Database and User:
     $ sudo mysql_secure_installation  
 Follow the prompts to set the root password and remove insecure default settings:-
 Log into the MariaDB shell as the root user:
@@ -90,11 +91,11 @@ Log into the MariaDB shell as the root user:
 >     FLUSH PRIVILEGES;
 >     EXIT;
 
-### Configure Apache
+### Configure Apache:
     $ sudo systemctl restart apache2
     $ echo "<?php phpinfo(); ?>" | sudo tee /var/www/html/info.php
 
-### Configure PHP for Moodle:-
+### Configure PHP for Moodle:
     $ sudo nano /etc/php/8.3/apache2/php.ini
     max_input_vars = 5000
         
@@ -110,21 +111,21 @@ Log into the MariaDB shell as the root user:
     $ sudo systemctl restart php8.3-fpm
     $ sudo systemctl restart apache2
 
-### Download and Install Moodle in /var/www/html
+### Download and Install Moodle in /var/www/html:
     $ sudo rm -rf /var/www/html/index.html
 
 Download Or Copy moodle.zip file to /var/www/html/
 
-### Create and Set Directory Permissions
+### Create and Set Directory Permissions:
     $ sudo chown -R www-data:www-data /var/www/html/
     $ sudo chmod -R 755 /var/www/html/
 
-### Create Moodle Data Directory
+### Create Moodle Data Directory:
     $ sudo mkdir /var/www/moodledata
     $ sudo chown -R www-data:www-data /var/www/moodledata
     $ sudo chmod -R 775 /var/www/moodledata
 
-### Obtain SSL Certificate
+### Obtain SSL Certificate:
     $ sudo certbot --apache -d your_domain.com
 
 OR
@@ -133,7 +134,7 @@ OR
     $ sudo mkdir -p /etc/ssl/certs
     $ sudo openssl req -x509 -newkey rsa:4096 -keyout /etc/ssl/certs/moodle.key -out /etc/ssl/certs/moodle.crt -days 365 -nodes
 
-### Configure Apache for Moodle
+### Configure Apache for Moodle:
     $ sudo nano /etc/apache2/sites-available/000-default.conf
     <VirtualHost *:443>
         ServerAdmin admin@wl-moodle.lms.com
@@ -152,6 +153,7 @@ OR
         CustomLog ${APACHE_LOG_DIR}/access.log combined
     </VirtualHost>
 
+### Enable the ssl module and restart the apache2: 
     $ sudo a2enmod ssl
     $ sudo a2enmod rewrite
     $ sudo a2ensite moodle-ssl
@@ -174,7 +176,7 @@ We are ready to go!
 
 $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$
 
-## Additional Steps for Security and Performance:-
+## Additional Steps for Security and Performance:
 
 ### Configure Moodle
     $ sudo nano /var/www/html/config.php
