@@ -51,15 +51,15 @@ Here you can see apache2 is running, you can check logs, DB services, moodle fil
 ### steps to access moodle:-
 https://Your_domain_name
 Installation > 
-        Choose Languange > next
-        Paths > Confirm Paths > next
-        Database > Choose database driver > MariaDB(native/mariadb) > next
-        Database > Database settings > Username/Passwd > next  ##Check Entrypoint.sh file
-        Copyright notice > continue  
-        Server checks > Fix and Reload OR Continue (If everthing is ok)
-        Now it will check entire system and show you the result then > Continue
-General > Fill the form(USERNAME,PASSWORD,EMAIL,SITE NAME) > Update profile
-Site home settings>  Sitename, Site description, timezone, language, etc. > Save Changes
+>        Choose Languange > next
+>        Paths > Confirm Paths > next
+>        Database > Choose database driver > MariaDB(native/mariadb) > next
+>        Database > Database settings > Username/Passwd > next  ##Check Entrypoint.sh file
+>        Copyright notice > continue  
+>        Server checks > Fix and Reload OR Continue (If everthing is ok)
+>        Now it will check entire system and show you the result then > Continue
+>        General > Fill the form(USERNAME,PASSWORD,EMAIL,SITE NAME) > Update profile
+>        Site home settings>  Sitename, Site description, timezone, language, etc. > Save Changes
 
 We are ready to go!
 ____________________________________________________________________________________________________________________
